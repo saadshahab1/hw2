@@ -4,7 +4,7 @@
 # cast for each movie in the database.
 
 # To run this file, run the following command at your terminal prompt:
-# `rails runner kmdb.rb`
+# `rails runner kmdb.rb` #done
 
 # Requirements/assumptions
 #
@@ -71,12 +71,136 @@
 # Use `Model.destroy_all` code.
 # TODO!
 
+Studio.destroy_all
+Movie.destroy_all
+Actor.destroy_all
+Role.destroy_all
+
 # Generate models and tables, according to the domain model.
 # TODO!
+
+#RESPONSE:
+#rails generate model Studio
+#rails generate model Movie
+#rails generate model Actor
+#rails generate model Role
+
+#pls see HW2>app>db>migrate under each file for for studios, movies, actors, roles
+
 
 # Insert data into the database that reflects the sample data shown above.
 # Do not use hard-coded foreign key IDs.
 # TODO!
+
+#STUDIO
+
+studio = Studio.new
+# puts studio.inspect
+studio["name"] = "Warner Bros."
+# puts studio.inspect
+studio.save
+
+puts "There are #{Studio.all.count} studios"
+
+#MOVIE
+
+#puts "studios: #{Studio.all.count}"
+#puts "movies: #{Movie.all.count}"
+
+wb = Studio.find_by({"name" => "Warner Bros."})
+#puts wb.inspect
+
+movie = Movie.new
+movie["title"] = "Batman Begins"
+movie["year_released"] = "2005"
+movie["rated"] = "PG-13"
+movie["studio_id"] = wb["id"]
+movie.save
+
+movie = Movie.new
+movie["title"] = "The Dark Knight"
+movie["year_released"] = "2008"
+movie["rated"] = "PG-13"
+movie["studio_id"] = wb["id"]
+movie.save
+
+movie = Movie.new
+movie["title"] = "The Dark Knight Rises"
+movie["year_released"] = "2012"
+movie["rated"] = "PG-13"
+movie["studio_id"] = wb["id"]
+movie.save
+
+puts "There are #{Movie.all.count} movies"
+
+all_movies = Movie.all
+# puts all_movies.inspect
+
+#ACTOR
+
+actor = Actor.new
+actor["name"] = "Christian Bale"
+actor.save
+
+actor = Actor.new
+actor["name"] = "Michael Caine"
+actor.save
+
+actor = Actor.new
+actor["name"] = "Liam Neeson"
+actor.save
+
+actor = Actor.new
+actor["name"] = "Katie Holmes"
+actor.save
+
+actor = Actor.new
+actor["name"] = "Gary Oldman"
+actor.save
+
+actor = Actor.new
+actor["name"] = "Heath Ledger"
+actor.save
+
+actor = Actor.new
+actor["name"] = "Aaron Eckhart"
+actor.save
+
+actor = Actor.new
+actor["name"] = "Maggie Gyllenhaal"
+actor.save
+
+actor = Actor.new
+actor["name"] = "Tom Hardy"
+actor.save
+
+actor = Actor.new
+actor["name"] = "Joseph Gordon-Levitt"
+actor.save
+
+actor = Actor.new
+actor["name"] = "Anne Hathaway"
+actor.save
+
+puts "There are #{Actor.all.count} actors"
+
+#ROLE
+
+#wb = Studio.find_by({"name" => "Warner Bros."})
+#puts wb.inspect
+
+role = Role.new
+role["movie_id"] = ""
+role["actor_id"] = ""
+role["character_name"] = "Bruce Wayne"
+role.save
+
+role = Role.new
+role["movie_id"] = ""
+role["actor_id"] = ""
+role["character_name"] = "Alfred"
+role.save
+
 
 # Prints a header for the movies output
 puts "Movies"
@@ -94,3 +218,5 @@ puts ""
 
 # Query the cast data and loop through the results to display the cast output for each movie.
 # TODO!
+
+
